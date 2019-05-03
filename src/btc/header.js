@@ -1,6 +1,7 @@
 const Struct = require('./../struct.js');
 const Varint = require('./../varint.js');
 const Hexa = require('./../hexa.js');
+const Bits = require('./bits.js');
 
 
 class Header extends Struct {

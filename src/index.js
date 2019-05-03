@@ -10,6 +10,7 @@ module.exports = {
 
   
   Btc: {
+    Block:        require('./btc/block.js'),
     Header:       require('./btc/header.js'),
     Bits:         require('./btc/bits.js'),
     Target:       require('./btc/target.js'),

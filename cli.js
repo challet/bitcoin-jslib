@@ -76,6 +76,15 @@ program
     var transaction = Btc.Transaction.extractFrom(raw);
     display.struct(transaction);
   });
+  
+program
+  .command('decodeblock <hexa>')
+  .description('Decode a bitcoin block into its components')
+  .action( (input) => {    
+    var raw = Hexa.fromString(input);
+    var block = Btc.Block.extractFrom(raw);
+    display.struct(block);
+  });
 
 // output help if no command given
 if (process.argv.slice(2).length == 0) {

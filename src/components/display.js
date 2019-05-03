@@ -11,7 +11,7 @@ class Display {
       level_indicator: "-",
       sizes: {
         label: 14,
-        constructor: 6,
+        constructor: 12,
         length: 5,
         extra: 3
       }

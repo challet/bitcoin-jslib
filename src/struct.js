@@ -13,7 +13,7 @@ class Struct extends Hexa {
       
       if (Number.isInteger(seq.size) && seq.size > 0) {
         // if it is a fixed length part
-        var part = hexa.slice(shift, shift + seq.size);
+        var part = seq.constructor.extractFrom(hexa.slice(shift, shift + seq.size));
       } else {
         // varint chunks
         switch (seq.size) {
@@ -45,6 +45,8 @@ class Struct extends Hexa {
           break;
         }
       }
+      
+      console.log(seq,part);
 
       if (part != null) {
         parts.push({ name: seq.name, hexa: part });
