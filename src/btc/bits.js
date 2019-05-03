@@ -7,7 +7,7 @@ class Bits extends Hexa {
     const exp   = this.slice(0,1);
     const coeff = this.slice(1,4);
     
-    return Target.fromString(coeff.toString() + '00'.repeat(Number(exp.toNumber())));
+    return Target.fromString( '00'.repeat(Number(exp.toNumber())) + coeff.toString() );
   }
   
 }

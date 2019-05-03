@@ -1,9 +1,9 @@
-const { Hexa, Varint, Bits, Btc } = require('./src/index.js');
+const { Hexa, Varint, Bits, Btc, Display } = require('./src/index.js');
 
+const program = require('commander').version('0.0.1');
+const display = new Display();
 
-var program = require('commander').version('0.0.1');
-  
-  
+/* Utility commands */
 program
   .command('hex2dec <hexa>')
   .description('Convert the hexadecimal input string into a decimal number')
@@ -38,7 +38,7 @@ program
 
 program
   .command('dec2varint <dec>')
-  .description('Encode a decimal number into a Varint and display it')
+  .description('Encode a decimal number into a Varint')
   .action( (input) => {
     var varint = Varint.fromNumber(input);
     console.log(varint.toString());
@@ -46,7 +46,7 @@ program
 
 program
   .command('bits2target <hexa>')
-  .description('Compute a target from a bits field input and display it')
+  .description('Compute a target from a bits field input')
   .action( (input) => {
     var bits = Btc.Bits.fromString(input);
     console.log(bits.toTarget().toString());
@@ -54,7 +54,7 @@ program
   
 program
   .command('bits2difficulty <hexa>')
-  .description('Compute a difficulty ratio from a bits field input and display it')
+  .description('Compute a difficulty ratio from a bits field input')
   .action( (input) => {
     var bits = Btc.Bits.fromString(input);
     console.log(bits.toTarget().toDifficulty());
@@ -68,33 +68,16 @@ program
     console.log(target.toDifficulty());
   });
 
+program
+  .command('decodetransaction <hexa>')
+  .description('Decode a bitcoin transaction into its components')
+  .action( (input) => {
+    var raw = Hexa.fromString(input);
+    var transaction = Btc.Transaction.extractFrom(raw);
+    display.struct(transaction);
+  });
 
-/*
-
-var command = argv._[0];
-
-switch (command) {
-  case 'hex2dec':
-    var input = 
-    var output = input.toNumber();
-    console.log()
-  case 'dec2hex':
-  case 'swapendian':
-  case 'varint2dec':
-  case 'dec2varint':
-  case 'bits2target':
-  case 'target2difficulty':
-    
-  break;
-  
-  
-  case 'decodetransaction'
-  case 'decodebloc'
-}
-  
-*/
-
-// output help if no cammand given
+// output help if no command given
 if (process.argv.slice(2).length == 0) {
   process.argv[2] = '--help';
 }

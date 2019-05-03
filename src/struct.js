@@ -21,7 +21,7 @@ class Struct extends Hexa {
             // this is a varint, of which usage will be known later
             var part = Varint.extractFrom(hexa.slice(shift));
             // temporary store it as an int
-            last_varint = part.toNumber();
+            last_varint = Number(part.toNumber());
           break;
           case this.VARINT_CONTENT:
             if (last_varint == null) throw "A varint header is not known";
@@ -32,11 +32,12 @@ class Struct extends Hexa {
           case this.VARINT_REPEAT:
             if (last_varint == null) throw "A varint header is not known";
             // the previous varint specify the iterations count
-            var part = seq.constructor.extractFrom(hexa.slice(shift));
-            if (--last_varint == 0) {
-              last_varint = null;
-            } else {
+            if (last_varint-- > 0) {
+              var part = seq.constructor.extractFrom(hexa.slice(shift));
               i--; // new round of the same
+            } else {
+              var part = null;
+              last_varint = null;
             }
           break;
           default:
@@ -44,8 +45,11 @@ class Struct extends Hexa {
           break;
         }
       }
-      shift += part.length;
-      parts.push({ name: seq.name, hexa: part });
+
+      if (part != null) {
+        parts.push({ name: seq.name, hexa: part });
+        shift += part.length;
+      }
     }
     
     return new this(hexa.buffer.slice(0, shift), parts);

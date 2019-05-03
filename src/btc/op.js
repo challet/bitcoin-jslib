@@ -3,7 +3,7 @@ const Hexa = require('./../hexa.js');
 class Op extends Hexa {
   
   static factory(code, hexa) {
-    return new (require(`./op.${code.toString(16)}.js`))(hexa);
+    return new (require(`./op/op.${code.toString(16)}.js`))(hexa);
   }
   
   execute(stack) {
