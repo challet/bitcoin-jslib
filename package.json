@@ -10,5 +10,8 @@
     "blockchain"
   ],
   "author": "challet",
-  "license": "GPL-3.0-only"
+  "license": "GPL-3.0-only",
+  "dependencies": {
+    "minimist": "^1.2.0"
+  }
 }
