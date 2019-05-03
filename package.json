@@ -1,0 +1,14 @@
+{
+  "name": "blockchain-jslib",
+  "version": "0.0.1",
+  "description": "Experiment on blockchain utilities",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "blockchain"
+  ],
+  "author": "challet",
+  "license": "GPL-3.0-only"
+}
