@@ -6,7 +6,6 @@ const Op = require('./op.js');
 class Script extends Struct {
 
   static extractFrom(hexa) {
-    console.log(hexa.buffer);
     var shift = 0;
     var last_varint = null;
     var parts = [];

@@ -73,6 +73,7 @@ program
   .description('Decode a bitcoin transaction into its components')
   .action( (input) => {
     var raw = Hexa.fromString(input);
+    display.one(raw, 'raw');
     var transaction = Btc.Transaction.extractFrom(raw);
     display.struct(transaction);
   });
@@ -80,8 +81,9 @@ program
 program
   .command('decodeblock <hexa>')
   .description('Decode a bitcoin block into its components')
-  .action( (input) => {    
+  .action( (input) => {
     var raw = Hexa.fromString(input);
+    display.one(raw, 'raw');
     var block = Btc.Block.extractFrom(raw);
     display.struct(block);
   });

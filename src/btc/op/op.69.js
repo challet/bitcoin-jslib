@@ -1,4 +1,4 @@
-const Op = require('./op.base.js');
+const Op = require('../op.js');
 
 module.exports =  class Op69 extends Op {
   

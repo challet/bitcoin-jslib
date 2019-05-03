@@ -1,5 +1,5 @@
-const Op = require('./op.base.js');
-const Hexa = require('./../hexa.js');
+const Op = require('../op.js');
+const Hexa = require('./../../hexa.js');
 
 const crypto = require('crypto');
 const sha256 = crypto.createHash('sha256');

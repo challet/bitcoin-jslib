@@ -45,8 +45,6 @@ class Struct extends Hexa {
           break;
         }
       }
-      
-      console.log(seq,part);
 
       if (part != null) {
         parts.push({ name: seq.name, hexa: part });
