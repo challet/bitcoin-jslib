@@ -1,6 +1,6 @@
-const Struct = require('./../struct/struct.base.js');
+const Struct = require('./../struct.js');
 const Varint = require('./../varint.js');
-const Op     = require('./../op/op.base.js');
+const Op     = require('./../btc/op.js');
 
 const Display = new (require('./display.js'))();
 

@@ -16,7 +16,6 @@ class Hexa {
   }
   
   static fromNumber(number) {
-    number = new Number(number);
     return new this(Buffer.from(number.toString(BASE), ENCODING));
   }
   
@@ -30,7 +29,7 @@ class Hexa {
   }
   
   toNumber() {
-    return Number.parseInt(this.toString(), BASE);
+    return BigInt(`0x${this.toString()}`);
   }
   
   toString(start, end) {

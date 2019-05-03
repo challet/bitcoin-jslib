@@ -12,6 +12,7 @@
   "author": "challet",
   "license": "GPL-3.0-only",
   "dependencies": {
+    "commander": "^2.20.0",
     "minimist": "^1.2.0"
   }
 }
