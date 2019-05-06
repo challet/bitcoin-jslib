@@ -57,7 +57,7 @@ class Struct extends Hexa {
             if (segwit_flag) {
               // did it extract the required number yet
               let inputs_nb = parts.filter((part) => part.name == 'inputs_nb').pop().hexa.toNumber();
-              let witnesses_nb = parts.filter((part) => part.name == 'witnesses').length;
+              let witnesses_nb = parts.filter((part) => part.name == 'witness').length;
               if (witnesses_nb < inputs_nb) {
                 var part = seq.constructor.extractFrom(hexa.slice(shift));
                 i--; // new round of the same

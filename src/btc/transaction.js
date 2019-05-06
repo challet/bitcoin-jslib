@@ -13,10 +13,10 @@ class Transaction extends Struct {
       { name: 'version',    size: 4,                    constructor: Hexa    },
       { name: 'segwit_flg', size: 2,                    constructor: Segwit  },
       { name: 'inputs_nb',  size: Struct.VARINT_HEADER, constructor: Varint  },
-      { name: 'inputs',     size: Struct.VARINT_REPEAT, constructor: Input   },
+      { name: 'input',      size: Struct.VARINT_REPEAT, constructor: Input   },
       { name: 'outputs_nb', size: Struct.VARINT_HEADER, constructor: Varint  },
-      { name: 'outputs',    size: Struct.VARINT_REPEAT, constructor: Output  },
-      { name: 'witnesses',  size: Struct.SEGWIT_REPEAT, constructor: Witness },
+      { name: 'output',     size: Struct.VARINT_REPEAT, constructor: Output  },
+      { name: 'witness',    size: Struct.SEGWIT_REPEAT, constructor: Witness },
       { name: 'locktime',   size: 4,                    constructor: Hexa    },
     ];
   }
