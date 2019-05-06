@@ -3,6 +3,15 @@ const Varint = require('./varint.js');
 
 class Struct extends Hexa {
   
+  constructor(hexa, parts) {
+    super(hexa);
+    this.parts = parts;
+  }
+  
+  static get bytesSequence() {
+    throw `${this.constructor} class must implement a bytesSequence method.`;
+  }
+
   static extractFrom(hexa) {
     var shift = 0;
     var last_varint = null;
@@ -40,6 +49,25 @@ class Struct extends Hexa {
               last_varint = null;
             }
           break;
+          // special case used only for transaction 'witnesses' field
+          // TODO : refactor better
+          case this.SEGWIT_REPEAT:
+            // is it segwit format
+            let segwit_flag = parts.some((part) => part.name == 'segwit_flg');
+            if (segwit_flag) {
+              // did it extract the required number yet
+              let inputs_nb = parts.filter((part) => part.name == 'inputs_nb').pop().hexa.toNumber();
+              let witnesses_nb = parts.filter((part) => part.name == 'witnesses').length;
+              if (witnesses_nb < inputs_nb) {
+                var part = seq.constructor.extractFrom(hexa.slice(shift));
+                i--; // new round of the same
+              } else {
+                var part = null;
+              }
+            } else {
+              var part = null;
+            }
+          break;
           default:
             throw `Unsuitable sequence : ${seq}`;
           break;
@@ -55,20 +83,12 @@ class Struct extends Hexa {
     return new this(hexa.buffer.slice(0, shift), parts);
   }
   
-  static get bytesSequence() {
-    throw `${this.constructor} class must implement a bytesSequence method.`;
-  }
-  
-  constructor(hexa, parts) {
-    super(hexa);
-    this.parts = parts;
-  }
-  
 }
 
 // add "constant like" class properties
 Object.defineProperty(Struct, 'VARINT_HEADER',  { value: -1, writable : false, enumerable : true, configurable : false });
 Object.defineProperty(Struct, 'VARINT_CONTENT', { value: -2, writable : false, enumerable : true, configurable : false });
 Object.defineProperty(Struct, 'VARINT_REPEAT',  { value: -3, writable : false, enumerable : true, configurable : false });
+Object.defineProperty(Struct, 'SEGWIT_REPEAT',  { value: -4, writable : false, enumerable : true, configurable : false });
 
 module.exports = Struct;
