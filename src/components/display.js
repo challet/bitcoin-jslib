@@ -53,7 +53,7 @@ class Display {
     
     struct.parts.forEach((part) => {
       // label with potential level
-      let label = this.options.level_indicator.repeat(level) + ' ' + part.name ;
+      let label = this.options.level_indicator.repeat(level) + part.name ;
       
       // recursviely display a sub structure if needed
       if (part.hexa instanceof Struct && this.options.struct_details != 0) {

@@ -68,6 +68,7 @@ program
     console.log(target.toDifficulty());
   });
 
+/* Decode commands */
 program
   .command('decodetransaction <hexa>')
   .description('Decode a bitcoin transaction into its components')
@@ -92,5 +93,6 @@ program
 if (process.argv.slice(2).length == 0) {
   process.argv[2] = '--help';
 }
+
 program.parse(process.argv);
 
