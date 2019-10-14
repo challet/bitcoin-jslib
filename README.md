@@ -1,4 +1,4 @@
-Experiment on blockchain data
+Experiment on bitcoin protocol data
 
 ## API documentation
 
