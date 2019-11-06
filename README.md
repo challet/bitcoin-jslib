@@ -1,4 +1,5 @@
-Experiment on bitcoin protocol data
+Experiment on handling bitcoin protocol data through a Javascript API.
+Draft version.
 
 ## API documentation
 
