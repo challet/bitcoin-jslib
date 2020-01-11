@@ -95,4 +95,5 @@ if (process.argv.slice(2).length == 0) {
 }
 
 program.parse(process.argv);
+display.out();
 

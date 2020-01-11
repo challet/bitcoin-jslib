@@ -12,6 +12,7 @@
   "author": "challet",
   "license": "GPL-3.0-only",
   "dependencies": {
+    "cli-table3": "^0.5.1",
     "commander": "^2.20.0"
   }
 }
